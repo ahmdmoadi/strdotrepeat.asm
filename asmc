@@ -1,1 +1,2 @@
+#!/bin/bash
 gcc -nostdlib -static -Wl,-N -Wl,--build-id=none -Wl,-s -Wl,--no-warn-rwx-segments $@
