@@ -4,6 +4,15 @@ I'm creating a string.repeat implementation in Linux GNU x86_64 Assembly.
 
 <br>
 
+## How to compile
+use bundled script `asmc`:
+```sh
+./asmc test.g.s -o ./out/testg # <- compile w/ script
+./testg # <- then run
+```
+
+<br>
+
 ## **/out**
 contains precompiled executable/s.
 ### Usage:
