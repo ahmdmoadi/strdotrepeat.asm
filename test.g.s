@@ -56,7 +56,9 @@ _start:
      cfnb:
      cmp r13, 1
      jg checkForLeadingZero
-     cflz:
+     cflzb:
+     je checkForZero
+     cfzb:
      swrite theNis theNislen
      exit 0
 
@@ -66,9 +68,15 @@ countcountstrlen:
      inc r13
      jmp countcountstrlen
 
+checkForZero:
+     cmp byte ptr [r12], zero_char
+     jne cfzb
+     swrite zc zclen
+     exit 0
+
 checkForLeadingZero:
      cmp byte ptr [r12], zero_char
-     jne cflz
+     jne cflzb
      swrite nlz nlzlen
      exit 1
 
@@ -118,3 +126,6 @@ toofew:
 
      nlz: .string "Leading zeros/octal count (e.g. 042) is not supported!\nUsage: testg <text> <count>"
      nlzlen = . - nlz
+
+     zc: .string "Are you wasting my time?!\n<count> cannot be zero!\nUsage: testg <text> <count > 0!>"
+     zclen = . - zc
